@@ -108,8 +108,21 @@ const keys = {};
 window.addEventListener("keydown", (e) => (keys[e.key] = true));
 window.addEventListener("keyup", (e) => (keys[e.key] = false));
 
-textures[1].onload =
+  textures[1].onload =
   textures[2].onload =
+  textures[3].onload =
+  textures[4].onload =
+  textures[5].onload =
+  textures[6].onload =
+  textures[7].onload =
+  textures[8].onload =
+  textures[9].onload =
   textures.floor.onload =
+  textures.floor.onload =
+  textures.sky.onload =
+  textures.floor2.onload =
+  playerImage.onload =
+  playerImageiz.onload =
+  playerImageder.onload =
   playerImage.onload =
     gameLoop;
