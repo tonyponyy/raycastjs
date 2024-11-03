@@ -32,7 +32,7 @@ var maps = [
     w: 30,
     h: 20,
     door: 1,
-    floor: "img/suelo.png",
+    floor: imageSources.floor,
   },
   {
     map: [
@@ -112,7 +112,7 @@ var maps = [
     w: 30,
     h: 60,
     door: 0,
-    floor: "img/arena.png",
+    floor: imageSources.floor2,
   },
 ];
 const map_setting = {

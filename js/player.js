@@ -4,7 +4,7 @@ const player = {
   y: TILE_SIZE * 1.5,
   angle: 0,
   speed: 1,
-  max_speed: 0.4,
+  max_speed: 4,
 };
 
 function can_move(x, y) {

@@ -82,11 +82,11 @@ function gameLoop() {
   }
 
   if (!keys["ArrowUp"] && !keys["ArrowDown"]) {
-    physics.velocityX *= 0.998;
-    physics.velocityY *= 0.998;
+    physics.velocityX *= physics.inertia;
+    physics.velocityY *= physics.inertia;
   }
 
-  camera.z = (currentSpeed / physics.maxSpeed) * 50;
+  camera.z = (currentSpeed / physics.maxSpeed) * 5;
 
   camera.x = player.x - Math.cos(player.angle) * camera.distance;
   camera.y = player.y - Math.sin(player.angle) * camera.distance;

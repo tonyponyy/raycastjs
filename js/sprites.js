@@ -7,8 +7,8 @@ var other_sprites = [
     distanceToCamera: 0,
     multilater: true,
     loop: true,
-    vx: -0.3,
-    vy: 0.004,
+    vx: -3,
+    vy: 0.04,
     origonal_pos: { x: 1900, y: 970 },
   },
   {
@@ -18,8 +18,8 @@ var other_sprites = [
     distanceToCamera: 0,
     multilater: true,
     loop: true,
-    vx: -0.4,
-    vy: 0.008,
+    vx: -4,
+    vy: 0.08,
     origonal_pos: { x: 1900, y: 970 },
   },
   {
@@ -29,8 +29,8 @@ var other_sprites = [
     distanceToCamera: 0,
     multilater: true,
     loop: true,
-    vx: -0.2,
-    vy: 0.006,
+    vx: -1,
+    vy: 0.06,
     origonal_pos: { x: 1900, y: 970 },
   },
 ];
