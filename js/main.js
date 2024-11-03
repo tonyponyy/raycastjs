@@ -108,21 +108,25 @@ const keys = {};
 window.addEventListener("keydown", (e) => (keys[e.key] = true));
 window.addEventListener("keyup", (e) => (keys[e.key] = false));
 
-  textures[1].onload =
-  textures[2].onload =
-  textures[3].onload =
-  textures[4].onload =
-  textures[5].onload =
-  textures[6].onload =
-  textures[7].onload =
-  textures[8].onload =
-  textures[9].onload =
-  textures.floor.onload =
-  textures.floor.onload =
-  textures.sky.onload =
-  textures.floor2.onload =
-  playerImage.onload =
-  playerImageiz.onload =
-  playerImageder.onload =
-  playerImage.onload =
-    gameLoop;
+//proceso de carga
+let loadedImages = 0;
+const totalImages = Object.keys(imageSources).length;
+
+const checkImagesLoaded = () => {
+  loadedImages++;
+  if (loadedImages === totalImages) {
+    gameLoop(); // Llama a gameLoop solo si todas las imágenes están cargadas
+  }
+};
+
+for (const key in textures) {
+  if (textures.hasOwnProperty(key)) {
+    textures[key].src = imageSources[key];
+    textures[key].onload = checkImagesLoaded; // Asignar la misma función onload
+  }
+}
+
+playerImage.onload = checkImagesLoaded;
+playerImageiz.onload = checkImagesLoaded;
+playerImageder.onload = checkImagesLoaded;
+

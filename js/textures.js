@@ -1,12 +1,6 @@
 //textures
 const TILE_SIZE = 64;
 const DOOR_TILE = 4;
-const playerImage = new Image();
-playerImage.src = "img/personaje.png";
-const playerImageiz = new Image();
-playerImageiz.src = "img/personajeiz.png";
-const playerImageder = new Image();
-playerImageder.src = "img/personajeder.png";
 
 const textures = {
   1: new Image(),
@@ -22,18 +16,32 @@ const textures = {
   sky: new Image(),
   floor2: new Image(),
 };
-textures[1].src = "img/ladrillo.png";
-textures[2].src = "img/piedra.png";
-textures[3].src = "img/arbol.png";
-textures[4].src = "img/puerta.png";
-textures[5].src = "img/sprite.png";
-textures[6].src = "img/cactus.png";
-textures[7].src = "img/container.png";
-textures[8].src = "img/blank.png";
-textures[9].src = "img/coche.png";
-textures.floor.src = "img/suelo.png";
-textures.sky.src = "img/cielo.png";
-textures.floor2.src = "img/arena.png";
+
+const imageSources = {
+  1: "img/ladrillo.png",
+  2: "img/piedra.png",
+  3: "img/arbol.png",
+  4: "img/puerta.png",
+  5: "img/sprite.png",
+  6: "img/cactus.png",
+  7: "img/container.png",
+  8: "img/blank.png",
+  9: "img/coche.png",
+  floor: "img/suelo.png",
+  sky: "img/cielo.png",
+  floor2: "img/arena.png",
+};
+
+const playerImage = new Image();
+const playerImageiz = new Image();
+const playerImageder = new Image();
+
+playerImage.src = "img/personaje.png";
+playerImageiz.src = "img/personajeiz.png";
+playerImageder.src = "img/personajeder.png";
+
+
+
 
 var FLOOR_SPEED = 0.5;
 
