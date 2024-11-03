@@ -18,12 +18,12 @@ function can_move(x, y) {
 }
 
 function drawPlayer() {
-  let player_img = playerImage;
+  let player_img = textures.playerImage;
 
   if (keys["ArrowLeft"]) {
-    player_img = playerImageiz;
+    player_img = textures.playerImageiz;
   } else if (keys["ArrowRight"]) {
-    player_img = playerImageder;
+    player_img = textures.playerImageder;
   }
 
   ctx.drawImage(

@@ -15,6 +15,9 @@ const textures = {
   floor: new Image(),
   sky: new Image(),
   floor2: new Image(),
+  playerImage: new Image(),
+  playerImageiz: new Image(),
+  playerImageder: new Image(),
 };
 
 const imageSources = {
@@ -30,16 +33,10 @@ const imageSources = {
   floor: "img/suelo.png",
   sky: "img/cielo.png",
   floor2: "img/arena.png",
+  playerImage:"img/personaje.png",
+  playerImageiz:"img/personajeiz.png",
+  playerImageder:"img/personajeder.png",
 };
-
-const playerImage = new Image();
-const playerImageiz = new Image();
-const playerImageder = new Image();
-
-playerImage.src = "img/personaje.png";
-playerImageiz.src = "img/personajeiz.png";
-playerImageder.src = "img/personajeder.png";
-
 
 
 

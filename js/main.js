@@ -110,7 +110,7 @@ window.addEventListener("keyup", (e) => (keys[e.key] = false));
 
 //proceso de carga
 let loadedImages = 0;
-const totalImages = Object.keys(imageSources).length+3;
+const totalImages = Object.keys(imageSources).length;
 
 const checkImagesLoaded = () => {
   loadedImages++;
@@ -126,7 +126,4 @@ for (const key in textures) {
   }
 }
 
-playerImage.onload = checkImagesLoaded;
-playerImageiz.onload = checkImagesLoaded;
-playerImageder.onload = checkImagesLoaded;
 
