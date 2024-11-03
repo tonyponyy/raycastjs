@@ -1,7 +1,10 @@
 
 # Proyecto de Raycasting con Sprites
-
+<div align="center">
+  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" width="450"/>
+</div>
 Este proyecto implementa una técnica de **raycasting** en JavaScript para crear una perspectiva tridimensional en un entorno 2D, similar a los primeros juegos en 3D. Además, incluye **sprites** tipo billboard.
+Puedes ver la [demo](https://tonyponyy.github.io/raycastjs/) del proyecto.
 
 ## Características Principales
 
@@ -25,7 +28,7 @@ var maps = [
     w: 30,
     h: 20,
     door: 1,
-    floor: "img/suelo.png",
+    floor: " imageSources.floor,
   },
   {
     // segundo mapa
@@ -42,7 +45,7 @@ var maps = [
 
 ## Añadir elementos al mapa
 
-Para añadir un nuevo elemento al mapa (como una nueva pared), primero debemos **añadir la imagen** al proyecto en el archivo **js/textures.js**:
+Para añadir un nuevo elemento al mapa (como una nueva pared), primero debemos **añadir la imagen** al proyecto en el archivo **js/textures.js**, creando la imagen en **textures** y añadiendo la fuente en **imageSources**
 
 ```javascript
 const textures = {
@@ -51,8 +54,12 @@ const textures = {
   floor: new Image(),
   sky: new Image(),
 };
-textures[1].src = "img/ladrillo.png";
-textures[2].src = "img/piedra.png"; // <- y ponemos la fuente de la imagen 
+const imageSources = {
+  1: "img/ladrillo.png",
+  2: "img/piedra.png", // <- añadimos la ruta de la imagen
+  floor: "img/arena.png",
+  sky: "img/cielo.png",
+};
 ```
 
 Una vez añadido el elemento, podremos utilizar el tile 2 en los mapas. Además, podemos añadir propiedades adicionales al elemento que acabamos de crear.
@@ -75,7 +82,8 @@ const map_setting = {
 
 - **hollow**: Hace que el elemento sea atravesable, pero visible para el jugador.
 - **billboard**: El elemento se imprimirá como sprite estático y no le afectará el ángulo de visión.
-- **multilater** (solo aplica a los billboards): Permite que un sprite tipo billboard cambie de apariencia según el ángulo de visión. Los tiles multilater deben seguir un formato específico (ver ejemplo en `img/coche.png`).
+- **multilater** (solo aplica a los billboards): Permite que un sprite tipo billboard cambie de apariencia según el ángulo de visión. Los tiles multilater deben seguir un formato específico (ver siguiente imagen).
+  ![Ejemplo de sprite multilater](https://tonyponyy.github.io/raycastjs/img/coche.png)
 
 ## Cargar Sprites en el mapa
 
