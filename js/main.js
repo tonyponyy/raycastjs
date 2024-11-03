@@ -110,19 +110,19 @@ window.addEventListener("keyup", (e) => (keys[e.key] = false));
 
 //proceso de carga
 let loadedImages = 0;
-const totalImages = Object.keys(imageSources).length;
+const totalImages = Object.keys(imageSources).length+3;
 
 const checkImagesLoaded = () => {
   loadedImages++;
   if (loadedImages === totalImages) {
-    gameLoop(); // Llama a gameLoop solo si todas las imágenes están cargadas
+    gameLoop(); 
   }
 };
 
 for (const key in textures) {
   if (textures.hasOwnProperty(key)) {
     textures[key].src = imageSources[key];
-    textures[key].onload = checkImagesLoaded; // Asignar la misma función onload
+    textures[key].onload = checkImagesLoaded; 
   }
 }
 
