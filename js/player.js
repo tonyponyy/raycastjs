@@ -5,6 +5,7 @@ const player = {
   angle: 0,
   speed: 1,
   max_speed: 16,
+  turbo:2
 };
 
 function can_move(x, y) {
@@ -57,9 +58,13 @@ function set_player_pos(map) {
 
 function player_physics() {
 
+  var turbo =1
+  if (keys["D"] || keys["d"]) {
+    turbo = player.turbo
+  }
   let acceleration = 0;
   if (keys["ArrowUp"]) {
-    acceleration = physics.speed_trust*4;
+    acceleration = (physics.speed_trust*4)*turbo;
   } else if (keys["ArrowDown"]) {
     acceleration = -physics.speed_trust * 0.5;
   }
@@ -72,8 +77,9 @@ function player_physics() {
     physics.velocityY += directionY * acceleration;
   }
 
-    
-  const turbo = keys["d"] ? 2 : 1;
+
+
+
   const maxSpeed = player.max_speed * turbo;
 
     
