@@ -48,7 +48,7 @@ function drawSky() {
   const skyHeight = canvas.height / 2 + camera.z;
   const imageCount = Math.ceil(skyWidth / skyTexture.width) + 7;
 
-  for (let i = 0; i < imageCount; i++) {
+  for (let i = -400; i < imageCount; i++) {
     const x = parseInt(
       i * skyTexture.width * 2 - ((camera.angle * 110) % skyTexture.width) * 2
     );
