@@ -1,10 +1,10 @@
 
 # Proyecto de Raycasting con Sprites
-<div align="center">
-  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" height="250"/>
-  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot2.png" alt="Coche en el juego" height="250"/>
+<div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
+  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot2.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
 </div>
-</div>
+
 
 Este proyecto implementa una técnica de **raycasting** en JavaScript para crear una perspectiva tridimensional en un entorno 2D, similar a los primeros juegos en 3D. Además, incluye **sprites** tipo billboard.
 Prueba la [demo aquí](https://tonyponyy.github.io/raycastjs/).
