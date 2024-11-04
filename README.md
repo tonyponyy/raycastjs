@@ -14,7 +14,7 @@ Prueba la [demo aquí](https://tonyponyy.github.io/raycastjs/).
 
 ## Ejemplo
 
-En este ejemplo o demo, el personaje se puede mover utilizando las flechas del teclado y **D** para el turbo. El personaje es una persona subida en un carrito de la compra (el carrito se eligió porque me dio pereza corregir la física aplicada al movimiento del jugador 😅).
+En [este ejemplo o demo](https://tonyponyy.github.io/raycastjs/), el personaje se puede mover utilizando las flechas del teclado y **D** para el turbo. El personaje es una persona subida en un carrito de la compra (el carrito se eligió porque me dio pereza corregir la física aplicada al movimiento del jugador 😅).
 
 Existen dos escenas: una es un estacionamiento y, si cruzamos la puerta, accedemos a una especie de desierto.
 
@@ -44,7 +44,7 @@ var maps = [
 - **door**: Indica el mapa a cargar al cruzar una puerta (el número representa la posición del mapa en el array **maps**).
 - **floor**: Es la ruta del sprite que se usará para el suelo.
 
-## Añadir elementos al mapa
+## Añadir elementos para usarlos en el mapa
 
 Para añadir un nuevo elemento al mapa (como una nueva pared), primero debemos **añadir la imagen** al proyecto en el archivo **js/textures.js**, creando la imagen en **textures** y añadiendo la fuente en **imageSources**
 
@@ -65,7 +65,7 @@ const imageSources = {
 
 Una vez añadido el elemento, podremos utilizar el tile 2 en los mapas. Además, podemos añadir propiedades adicionales al elemento que acabamos de crear.
 
-## Añadir propiedades al elemento
+## Añadir propiedades al elemento (opcional)
 
 Para configurar el sprite, debemos ir al archivo **js/map.js** y modificar la variable global **map_setting**, donde guardamos todas las propiedades de los tiles (este paso es opcional, ya que algunos elementos no requieren ninguna configuración especial).
 
@@ -92,7 +92,7 @@ Existen varias formas de cargar sprites en el mapa:
 
 ### Integrarlo como elemento billboard
 
-Cargamos el elemento como se describió anteriormente y lo añadimos en el mapa.
+Cargamos el elemento como se describió anteriormente (añadir el numero asociado al tile a la array de **map_setting**) y lo añadimos en el mapa.
 
 ### Integrarlo dinámicamente
 
