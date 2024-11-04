@@ -1,4 +1,4 @@
-//physycs
+  
 const PI = Math.PI;
 const physics = {
   inertia: 0.97,
@@ -6,5 +6,5 @@ const physics = {
   velocityX: 0,
   velocityY: 0,
   angleSpeed: 0.03,
-  speed_trust: 0.04,
+  speed_trust: 0.05,
 };

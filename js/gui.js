@@ -1,4 +1,4 @@
-//GUI
+  
 function drawHUD(context = ctx) {
     const hudWidth = 250;
     const hudHeight = 100;

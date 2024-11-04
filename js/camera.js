@@ -1,4 +1,4 @@
-//camera
+  
 const camera = {
   x: player.x,
   y: player.y,

@@ -1,4 +1,4 @@
-//map
+  
 var CURRENT_LEVEL = 0;
 var map = [[0], [0]];
 var maps = [

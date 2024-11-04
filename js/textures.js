@@ -1,4 +1,4 @@
-//textures
+  
 const TILE_SIZE = 64;
 const DOOR_TILE = 4;
 

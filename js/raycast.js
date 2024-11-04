@@ -1,4 +1,4 @@
-//raycast
+  
 const FOV = PI / 3;
 const RAY_COUNT = 200;
 var ITERATIONS_RAYDATA_H = 30;

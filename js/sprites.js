@@ -1,4 +1,4 @@
-//sprites
+  
 var other_sprites = [
   {
     x: 1900,
