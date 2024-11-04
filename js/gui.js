@@ -11,7 +11,7 @@ function drawHUD(context = ctx) {
     const info = [
         `VX: ${physics.velocityX.toFixed(2)}`,
         `VY: ${physics.velocityY.toFixed(2)}`,
-        `Escene: ${CURRENT_LEVEL}`
+        `CURRENT LEVEL: ${CURRENT_LEVEL}`
     ];
     info.forEach((line, index) => {
         ctx.fillText(line, hudX + 10, hudY + 20 + (index * 16));
