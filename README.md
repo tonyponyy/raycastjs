@@ -3,8 +3,9 @@
 <div align="center">
   <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" width="450"/>
 </div>
+
 Este proyecto implementa una técnica de **raycasting** en JavaScript para crear una perspectiva tridimensional en un entorno 2D, similar a los primeros juegos en 3D. Además, incluye **sprites** tipo billboard.
-Puedes ver la [demo](https://tonyponyy.github.io/raycastjs/) del proyecto.
+Prueba la [demo aquí](https://tonyponyy.github.io/raycastjs/).
 
 ## Características Principales
 
