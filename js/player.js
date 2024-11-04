@@ -17,6 +17,7 @@ function can_move(x, y) {
   return !result > 0;
 }
 
+
 function drawPlayer() {
   let player_img = textures.playerImage;
 
@@ -29,9 +30,9 @@ function drawPlayer() {
   ctx.drawImage(
     player_img,
     parseInt(canvas.width / 2 - 5),
-    parseInt(canvas.height / 2),
-    parseInt(250 - camera.z * 2),
-    parseInt(250 - camera.z * 2)
+    parseInt(canvas.height / 2)+80,
+    parseInt(150 - camera.z * 2),
+    parseInt(150 - camera.z * 2)
   );
 }
 

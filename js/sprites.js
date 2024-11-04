@@ -1,4 +1,4 @@
-  
+
 var other_sprites = [
   {
     x: 1900,
@@ -9,29 +9,29 @@ var other_sprites = [
     loop: true,
     vx: -3,
     vy: 0.04,
-    origonal_pos: { x: 1900, y: 970 },
+    origonal_pos: { x: 1778, y: 1179 },
   },
   {
     x: 1900,
     y: 970,
-    texture: textures[9],
+    texture: textures[15],
     distanceToCamera: 0,
     multilater: true,
     loop: true,
     vx: -4,
     vy: 0.08,
-    origonal_pos: { x: 1900, y: 970 },
+    origonal_pos: { x: 1778, y: 1179 },
   },
   {
     x: 1900,
     y: 970,
-    texture: textures[9],
+    texture: textures[16],
     distanceToCamera: 0,
     multilater: true,
     loop: true,
     vx: -1,
-    vy: 0.06,
-    origonal_pos: { x: 1900, y: 970 },
+    vy: 0.006,
+    origonal_pos: { x: 1778, y: 1179 },
   },
 ];
 
