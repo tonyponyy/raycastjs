@@ -1,5 +1,5 @@
   
-const PI = Math.PI;
+var PI = 3.14
 const physics = {
   inertia: 0.97,
   maxSpeed: 3,

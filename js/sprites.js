@@ -10,6 +10,7 @@ var other_sprites = [
     vx: -3,
     vy: 0.04,
     origonal_pos: { x: 1778, y: 1179 },
+    map:0,
   },
   {
     x: 1900,
@@ -21,6 +22,7 @@ var other_sprites = [
     vx: -4,
     vy: 0.08,
     origonal_pos: { x: 1778, y: 1179 },
+    map:0,
   },
   {
     x: 1900,
@@ -32,6 +34,7 @@ var other_sprites = [
     vx: -1,
     vy: 0.006,
     origonal_pos: { x: 1778, y: 1179 },
+    map:0,
   },
 ];
 
@@ -57,7 +60,7 @@ function drawSprites() {
       }
     }
   }
-  sprites = sprites.concat(other_sprites);
+  sprites = sprites.concat(other_sprites.filter(sprite => sprite.map === CURRENT_LEVEL));
 
   const visibleSprites = sprites.filter((sprite) => {
     const dx = sprite.x - camera.x;
@@ -149,17 +152,19 @@ function drawSprites() {
 
 function move_other_sprites() {
   for (let i = 0; i < other_sprites.length; i++) {
-    other_sprites[i].x = other_sprites[i].x + other_sprites[i].vx;
-    other_sprites[i].y = other_sprites[i].y + other_sprites[i].vy;
-    if (other_sprites[i].loop) {
-      if (
-        map[parseInt(other_sprites[i].y / 64)][
-          parseInt(other_sprites[i].x / 64)
-        ] != 0
-      ) {
-        other_sprites[i].x = other_sprites[i].origonal_pos.x;
-        other_sprites[i].y = other_sprites[i].origonal_pos.y;
+      if (other_sprites[i].map == CURRENT_LEVEL){
+        other_sprites[i].x = other_sprites[i].x + other_sprites[i].vx;
+        other_sprites[i].y = other_sprites[i].y + other_sprites[i].vy;
+        if (other_sprites[i].loop) {
+          if (
+            map[parseInt(other_sprites[i].y / 64)][
+              parseInt(other_sprites[i].x / 64)
+            ] != 0
+          ) {
+            other_sprites[i].x = other_sprites[i].origonal_pos.x;
+            other_sprites[i].y = other_sprites[i].origonal_pos.y;
+          }
+        }
       }
     }
-  }
 }

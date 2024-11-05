@@ -8,6 +8,6 @@ const camera = {
   height: 32,
   dirX: Math.cos(45),
   dirY: Math.sin(45),
-  planeX: Math.cos(45 + Math.PI / 2) * 0.66,
-  planeY: Math.sin(45 + Math.PI / 2) * 0.66,
+  planeX: Math.cos(45 + PI / 2) * 0.66,
+  planeY: Math.sin(45 + PI / 2) * 0.66,
 };
