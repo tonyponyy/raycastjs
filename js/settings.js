@@ -5,9 +5,9 @@ var PI = 3.14
 
 //configuración del raycast
 var raycast_setting = {
-    fov: PI / 3,
-    ray_count:200,
-    distance: 30,
+    fov: PI / 3, //el angulo del campo de visión
+    ray_count:200, // los numeros de rayos ( a mas rayos, mas calidad pero se pierde rendimiento)
+    distance: 30, // la distancia a partir se empieza a dibujar
 }
 
 // configuración del jugador
@@ -58,7 +58,7 @@ const camera = {
     hollow: [4, 8],
     billboard: [5, 6, 7, 8, 9,25],
     multilater: [9],
-    heights : [
+    heights : [ // aqui definimos la altura del tile (primer elemento el tile, el segundo la altura)
         [17, 2],
         [18,3],
         [19,4],
