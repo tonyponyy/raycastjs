@@ -115,6 +115,7 @@ var other_sprites = [
     vx: -0.3,
     vy: 0.004,
     original_pos: { x: 1900, y: 970 },
+    map:0 
   },
   {
     // otro objeto
@@ -129,9 +130,10 @@ Este método permite modificar dinámicamente sus propiedades y añadir caracter
 - **texture**: La textura del sprite (utilizamos `textures[numero_del_tile]` para escoger la imagen).
 - **distanceToCamera**: Distancia de la cámara (se recomienda dejarlo en 0).
 - **multilater**: Indica si el sprite es multilateral.
-- **vx** y **vy**: **Experimental**. Velocidad en los ejes X e Y aplicada en cada iteración del renderizado.
-- **loop**: **Experimental**. Si está en `true`, el objeto volverá a su posición original al colisionar con una pared u otro elemento (posición definida en `original_pos`).
-- **original_pos**: **Experimental**. Define la posición inicial del objeto, a la cual vuelve después de colisionar.
+- **vx** y **vy**: Velocidad en los ejes X e Y aplicada en cada iteración del renderizado.
+- **loop**: Si está en `true`, el objeto volverá a su posición original al colisionar con una pared u otro elemento (posición definida en `original_pos`).
+- **original_pos**: Define la posición inicial del objeto, a la cual vuelve después de colisionar.
+- **map**: El numero del array del mapa donde se imprimirá el sprite.
 
 ## Otras Consideraciones y Mejoras
 
