@@ -1,13 +1,10 @@
 
 # Proyecto de Raycasting con Sprites
-<div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
-</div>
 
-
-Este proyecto implementa una técnica de **raycasting** en JavaScript para crear una perspectiva tridimensional en un entorno 2D, similar a los primeros juegos en 3D. Además, incluye **sprites** tipo billboard.
+Este proyecto implementa una técnica de **raycasting** en JavaScript para crear una perspectiva tridimensional en un entorno 2D, similar a los primeros juegos en 3D. Además, incluye **sprites** tipo billboard y diferentes alturas.
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
   <img src="https://tonyponyy.github.io/raycastjs/img/screenshot2.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
+  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
 </div>
 
 Prueba la [demo aquí](https://tonyponyy.github.io/raycastjs/).
@@ -19,13 +16,13 @@ Prueba la [demo aquí](https://tonyponyy.github.io/raycastjs/).
 
 ## Ejemplo
 
-En [este ejemplo o demo](https://tonyponyy.github.io/raycastjs/), el personaje se puede mover utilizando las flechas del teclado y **D** para el turbo. El personaje es una persona subida en un carrito de la compra (el carrito se eligió porque me dio pereza corregir la física aplicada al movimiento del jugador 😅).
+En [este ejemplo o demo](https://tonyponyy.github.io/raycastjs/), el personaje se puede mover utilizando las flechas del teclado y **D** para el turbo.
 
-Existen dos escenas: una es un estacionamiento y, si cruzamos la puerta, accedemos a una especie de desierto.
+Existen dos escenas: una es un estacionamiento y, si cruzamos la puerta, accedemos a un de desierto.
 
 ## Mapas
 
-Los mapas se añaden en el array de la variable global **maps** y deben tener el siguiente formato:
+Los mapas se añaden en el array de la variable global **maps** (del archivo maps.js) y deben tener el siguiente formato:
 
 ```javascript
 var maps = [
@@ -72,24 +69,30 @@ Una vez añadido el elemento, podremos utilizar el tile 2 en los mapas. Además,
 
 ## Añadir propiedades al elemento (opcional)
 
-Para configurar el sprite, debemos ir al archivo **js/map.js** y modificar la variable global **map_setting**, donde guardamos todas las propiedades de los tiles (este paso es opcional, ya que algunos elementos no requieren ninguna configuración especial).
+Para configurar el sprite, debemos ir al archivo **js/settings.js** y modificar la variable global **map_setting**, donde guardamos todas las propiedades de los tiles (este paso es opcional, ya que algunos elementos no requieren ninguna configuración especial).
 
 Por ejemplo, si queremos que el tile sea atravesable, añadimos el número del tile en el array **hollow**:
 
 ```javascript
-const map_setting = {
-  hollow: [2], // <- hemos añadido aquí el tile 2
-  billboard: [],
-  multilater: [],
-}; 
+ const map_setting = {
+    hollow: [4, 8],
+    billboard: [5, 6, 7, 8, 9,25],
+    multilater: [9],
+    heights : [ // aqui definimos la altura del tile (primer elemento el numero asociado al tile, el segundo la altura)
+        [17, 2],
+        [18,3], 
+      ]
+  };  
 ```
 
 ### Tipos de Propiedades
 
 - **hollow**: Hace que el elemento sea atravesable, pero visible para el jugador.
+- **heights**: La altura que tendrá el elemento (numero_tile,numero_altura)
 - **billboard**: El elemento se imprimirá como sprite estático y no le afectará el ángulo de visión.
 - **multilater** (solo aplica a los billboards): Permite que un sprite tipo billboard cambie de apariencia según el ángulo de visión. Los tiles multilater deben seguir un formato específico (ver siguiente imagen).
   ![Ejemplo de sprite multilater](https://tonyponyy.github.io/raycastjs/img/coche.png)
+  
 
 ## Cargar Sprites en el mapa
 
@@ -135,8 +138,41 @@ Este método permite modificar dinámicamente sus propiedades y añadir caracter
 - **original_pos**: Define la posición inicial del objeto, a la cual vuelve después de colisionar.
 - **map**: El numero del array del mapa donde se imprimirá el sprite.
 
+## Opciones del raytracing
+Debemos ir al archivo **js/settings.js** y modificar la variable global **map_setting**,
+
+```javascript
+var raycast_setting = {
+    fov: PI / 3, 
+    ray_count:200,
+    distance: 30, 
+}
+```
+### Tipos de Propiedades
+
+- **fov**: El angulo de campo de visión, el valor **pi/3** es un angulo bastante estandarizado, aunque se puede jugar con los valores, por ejemplo, poniendo fov a **2** tenemos el efecto de ojo de pez.
+- **ray_count**: los numeros de rayos ( a mas rayos, mas resolución, pero se pierde rendimiento).
+- **distance**: la distancia a partir se deja de dibujar ( a mas distancia, mas abarca la vista, pero como en el caso del ray_count, se pierde rendimiento). 
+
+## Opciones del sombreado
+Debemos ir al archivo **js/settings.js** y modificar la variable global **shadow_settings**,
+
+```javascript
+var shadow_settings = {
+    enabled:true, 
+    max:0.3, 
+    min:0.1, 
+    distance:2000 
+}
+```
+### Tipos de Propiedades
+- **enabled**: true/false, **true** para aplicar el sombreado y **false** para desactivarlo.
+- **max**: maximo sombra aplicada (1 cuadrado negro, 0 sin sombra).
+- **min**: minimo al cual se empieza a sombrear
+- **distance**: distancia a la que se empieza a sombrear.
+
 ## Otras Consideraciones y Mejoras
 
 Aún quedan muchas cosas por mejorar, como el suelo, la visualización del sprite del jugador y solucionar algunos errores visuales. Con lo escrito aquí, tienes una base suficiente para empezar a explorar el código. Espero solucionar estos problemas y añadir nuevas funciones pronto.
 
-Este proyecto tiene licencia **UNLICENSE**, lo que significa que puedes utilizar el código para lo que quieras: modificarlo, venderlo... ¡de hecho, te animo a intentar sacar dinero con él! Buena suerte.
+Este proyecto tiene licencia **UNLICENSE**, lo que significa que puedes utilizar el código para lo que quieras: modificarlo, venderlo... de hecho, te animo a intentar sacar dinero con él, buena suerte.
