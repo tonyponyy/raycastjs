@@ -88,7 +88,7 @@ function castRays() {
     if (Array.isArray(rayHits)) {
       for (const rayData of rayHits) {
         const adjustedDistance = rayData.distance * Math.cos(rayAngle - camera.angle);
-
+        
         if (adjustedDistance <= 0) continue;
         const tileHeightEntry = map_setting.heights.find(entry => entry[0] === rayData.tileType);
         const blockCount = tileHeightEntry ? tileHeightEntry[1] : 1;
@@ -100,6 +100,11 @@ function castRays() {
         const singleBlockHeight = Math.max(0, baseWallHeight);
         const textureX = Math.floor(rayData.hitPosition * textures[rayData.tileType].width) % textures[rayData.tileType].width;
         const wallX = i * (canvas.width / raycast_setting.ray_count);
+        
+        //const angleFromCenter = Math.abs(rayAngle - camera.angle);
+        //const apparentWidth = Math.cos(angleFromCenter) / adjustedDistance;
+        //if (adjustedDistance <= 0 || angleFromCenter > Math.PI / 2.2 || apparentWidth < 0.02) continue;
+
         for (let j = 0; j < blockCount; j++) {
           const blockYPosition = canvas.height / 2 - singleBlockHeight / 2 - j * singleBlockHeight + camera.z;
           ctx.drawImage(
@@ -108,10 +113,10 @@ function castRays() {
             0,
             1,
             textures[rayData.tileType].height,
-            wallX,
-            blockYPosition,
-            canvas.width / raycast_setting.ray_count + 1,
-            singleBlockHeight
+            parseInt(wallX),
+            parseInt(blockYPosition),
+            parseInt(canvas.width / raycast_setting.ray_count + 3),
+            parseInt(singleBlockHeight)
           );
           
           let distanceShading = Math.pow(adjustedDistance / shadow_settings.distance, 2);

@@ -34,7 +34,7 @@ const physics = {
 //configuración de las sombras
 var shadow_settings = {
     enabled:true, // activo 
-    max:0.3, // maximo sombra aplicada (1 cuadrado negro, 0 sin sombra)
+    max:0.5, // maximo sombra aplicada (1 cuadrado negro, 0 sin sombra)
     min:0.1, // minimo al cual se empieza a sombrear
     distance:2000 //distancia a la que se empieza a sombrear
 }
