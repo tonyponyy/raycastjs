@@ -29,8 +29,8 @@ function drawFloor() {
     let lastTexX = -1, lastTexY = -1;
 
     for (let x = 0; x < canvas.width; x++) {
-      const floorX = player.x * SPEED_FACTOR + rowDistance * Math.cos(camera.angle - raycast_setting.fov / 2 + (raycast_setting.fov * x) / canvas.width);
-      const floorY = player.y * SPEED_FACTOR + rowDistance * Math.sin(camera.angle - raycast_setting.fov / 2 + (raycast_setting.fov * x) / canvas.height);
+      const floorX = camera.x * SPEED_FACTOR + rowDistance * Math.cos(camera.angle - raycast_setting.fov / 2 + (raycast_setting.fov * x) / canvas.width);
+      const floorY = camera.y * SPEED_FACTOR + rowDistance * Math.sin(camera.angle - raycast_setting.fov / 2 + (raycast_setting.fov * x) / canvas.height);
 
       const texX = Math.floor(((floorX % 32) + 32) % 32);
       const texY = Math.floor(((floorY % 32) + 32) % 32);
