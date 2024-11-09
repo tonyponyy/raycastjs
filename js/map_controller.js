@@ -1,5 +1,6 @@
 var CURRENT_LEVEL = 0;
 var map = [[0], [0]];
+var map_h = [[0], [0]];
 
 function load_map(number) {
   CURRENT_LEVEL = number;

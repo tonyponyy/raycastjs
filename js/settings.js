@@ -17,8 +17,17 @@ const player = {
     angle: 0,
     speed: 1,
     max_speed: 16,
-    turbo:2
+    turbo:2,
+    turbo_enabled:false
   };
+
+//configuración del canvas
+const canvas_setting = {
+    width:800,
+    height:600,
+    frame_counter : 0
+}
+
 
 //configuración de la fisica
 
@@ -43,7 +52,7 @@ var shadow_settings = {
 const camera = {
     x: player.x,
     y: player.y,
-    z: 0,
+    z: 6,
     angle: player.angle,
     distance: 40,
     height: 32,
@@ -55,8 +64,8 @@ const camera = {
 
   // configuración de los tiles
   const map_setting = {
-    hollow: [4, 8],
-    billboard: [5, 6, 7, 8, 9,25],
+    hollow: [4, 8,26,27,28,29,30,31,32,33,34,35],
+    billboard: [5, 6, 7, 8, 9,25,36],
     multilater: [9],
     heights : [ // aqui definimos la altura del tile (primer elemento el tile, el segundo la altura)
         [17, 2],
@@ -65,9 +74,11 @@ const camera = {
         [20,5],
         [21,2],
         [22,3],
-        [23,4],
-        [25,5]  
-      ]
+        [24,4],
+        [25,5], 
+      ],
+    floor: [26,27,28,29,30,31,32,33,34,35]
+    
   };  
 
 // configuración de las texturas
@@ -97,12 +108,26 @@ const camera = {
     23: new Image(),
     24: new Image(),
     25: new Image(),
+    26: new Image(),
+    27: new Image(),
+    28: new Image(),
+    29: new Image(),
+    30: new Image(),
+    31: new Image(),
+    32: new Image(),
+    33: new Image(),
+    34: new Image(),
+    35: new Image(),
+    36: new Image(),
     floor: new Image(),
     sky: new Image(),
     floor2: new Image(),
     playerImage: new Image(),
     playerImageiz: new Image(),
     playerImageder: new Image(),
+    turbo1: new Image(),
+    turbo2: new Image(),
+    turbo3: new Image(),
   };
   
   const imageSources = {
@@ -131,10 +156,24 @@ const camera = {
     23: "img/ladrillo.png",
     24: "img/ladrillo.png",
     25: "img/cono.png",
+    26: "img/asfalto1.png",
+    27: "img/asfalto2.png",
+    28: "img/asfalto3.png",
+    29: "img/asfalto4.png",
+    30: "img/asfalto5.png",
+    31: "img/asfalto6.png",
+    32: "img/asfalto7.png",
+    33: "img/asfalto8.png",
+    34: "img/asfalto9.png",
+    35: "img/checkpoint.png",
+    36: "img/ceda.png",
     floor: "img/suelo.png",
     sky: "img/cielo.png",
     floor2: "img/arena.png",
     playerImage:"img/personaje.png",
     playerImageiz:"img/personajeiz.png",
     playerImageder:"img/personajeder.png",
+    turbo1:"img/turbo1.png",
+    turbo2:"img/turbo3.png",
+    turbo3:"img/turbo2.png",
   };

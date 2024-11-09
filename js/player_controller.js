@@ -10,12 +10,22 @@ function can_move(x, y) {
 
 
 function drawPlayer() {
+  var corx = 0
+  var cory = 0
+  frame = parseInt(canvas_setting.frame_counter/5)%3
   let player_img = textures.playerImage;
+  var turbo_img = textures.turbo1
 
   if (keys["ArrowLeft"]) {
+     corx = 30
+     cory = -20
     player_img = textures.playerImageiz;
+    turbo_img = textures.turbo2
   } else if (keys["ArrowRight"]) {
+    corx = -30
+    cory = -20
     player_img = textures.playerImageder;
+    turbo_img = textures.turbo3
   }
 
   ctx.drawImage(
@@ -25,6 +35,24 @@ function drawPlayer() {
     parseInt(150 - camera.z * 2),
     parseInt(150 - camera.z * 2)
   );
+  if (player.turbo_enabled) {
+    ctx.drawImage(
+      turbo_img,
+      TILE_SIZE*frame,          // Coordenada X de la sección de la imagen a recortar
+      0,          // Coordenada Y de la sección de la imagen a recortar
+      64,         // Ancho de la sección a recortar (64 píxeles)
+      64,         // Alto de la sección a recortar (64 píxeles)
+      parseInt(canvas.width / 2 - 5)+corx, // Coordenada X en el canvas donde se dibujará la imagen
+      parseInt(canvas.height / 2) + 130+cory , // Coordenada Y en el canvas donde se dibujará la imagen
+      parseInt(150 - camera.z * 2), // Ancho de la imagen en el canvas
+      parseInt(150 - camera.z * 2)  // Alto de la imagen en el canvas
+    );
+  }
+  
+
+
+
+
 }
 
 function set_player_pos(map) {
@@ -47,10 +75,12 @@ function set_player_pos(map) {
 }
 
 function player_physics() {
-
+  player.turbo_enabled = false;
   var turbo =1
   if (keys["D"] || keys["d"]) {
+    player.turbo_enabled = true;
     turbo = player.turbo
+
   }
   let acceleration = 0;
   if (keys["ArrowUp"]) {
@@ -67,12 +97,8 @@ function player_physics() {
     physics.velocityY += directionY * acceleration;
   }
 
-
-
-
   const maxSpeed = player.max_speed * turbo;
 
-    
   const currentSpeed = Math.sqrt(
     physics.velocityX * physics.velocityX + 
     physics.velocityY * physics.velocityY
@@ -86,7 +112,8 @@ function player_physics() {
   }
 
     
-  const friction = Math.max(physics.inertia - (currentSpeed / maxSpeed) * 0.03, physics.inertia);
+  friction = Math.max(physics.inertia - (currentSpeed / maxSpeed) * 0.03, physics.inertia);
+
   physics.velocityX *= friction;
   physics.velocityY *= friction;
 
@@ -101,11 +128,11 @@ function player_physics() {
     const canMoveY = can_move(player.x, newY);
 
     if (!canMoveX) {
-      physics.velocityX *= -1.3;   
+      physics.velocityX *= -0.8;   
       newX = player.x;
     }
     if (!canMoveY) {
-      physics.velocityY *= -1.3;   
+      physics.velocityY *= -0.8;   
       newY = player.y;
     }
 

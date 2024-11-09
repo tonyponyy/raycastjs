@@ -7,7 +7,10 @@ first_load = true;
 function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawFloor();
+
   drawSky();
+  
+  castFloor();
   castRays();
   drawSprites();
   drawPlayer();
@@ -15,7 +18,7 @@ function render() {
 }
 
 function gameLoop() {
-  turbo = 1;
+  player.turbo_enabled = false;
   if (first_load) {
     load_map(0);
     set_player_pos(map);
@@ -24,6 +27,7 @@ function gameLoop() {
   player_physics();
   move_other_sprites();
   render();
+  canvas_setting.frame_counter +=1
   requestAnimationFrame(gameLoop);
 }
 
@@ -44,6 +48,7 @@ const checkImagesLoaded = () => {
 
 for (const key in textures) {
   if (textures.hasOwnProperty(key)) {
+    console.log(key+"")
     textures[key].src = imageSources[key];
     textures[key].onload = checkImagesLoaded; 
   }

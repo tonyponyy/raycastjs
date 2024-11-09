@@ -1,39 +1,39 @@
 
 var other_sprites = [
   {
-    x: 3008,
-    y: 7800,
+    x: 3070,
+    y: 5014,
     texture: textures[9],
     distanceToCamera: 0,
     multilater: true,
     loop: true,
     vx: -3,
     vy: 0.04,
-    origonal_pos: { x: 3008, y: 7800 },
+    origonal_pos: { x: 3070, y: 5014 },
     map:0,
   },
   {
-    x: 3008,
-    y: 7800,
+    x: 3070,
+    y: 5014,
     texture: textures[15],
     distanceToCamera: 0,
     multilater: true,
     loop: true,
     vx: -4,
     vy: 0.08,
-    origonal_pos: { x: 3008, y: 7800 },
+    origonal_pos: { x: 3070, y: 5014 },
     map:0,
   },
   {
-    x: 3008,
-    y: 7800,
+    x: 3070,
+    y: 5014,
     texture: textures[16],
     distanceToCamera: 0,
     multilater: true,
     loop: true,
     vx: -1,
     vy: 0.006,
-    origonal_pos: { x: 3008, y: 7800 },
+    origonal_pos: { x: 3070, y: 5014 },
     map:0,
   },
 ];
@@ -61,6 +61,7 @@ function drawSprites() {
     }
   }
   sprites = sprites.concat(other_sprites.filter(sprite => sprite.map === CURRENT_LEVEL));
+
 
   const visibleSprites = sprites.filter((sprite) => {
     const dx = sprite.x - camera.x;
@@ -157,12 +158,13 @@ function move_other_sprites() {
         other_sprites[i].y = other_sprites[i].y + other_sprites[i].vy;
         if (other_sprites[i].loop) {
           if (
-            map[parseInt(other_sprites[i].y / 64)][
+            map_setting.hollow.indexOf(map[parseInt(other_sprites[i].y / 64)][
               parseInt(other_sprites[i].x / 64)
-            ] != 0
+            ]) == -1
           ) {
             other_sprites[i].x = other_sprites[i].origonal_pos.x;
             other_sprites[i].y = other_sprites[i].origonal_pos.y;
+
           }
         }
       }
