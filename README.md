@@ -81,7 +81,8 @@ Por ejemplo, si queremos que el tile sea atravesable, añadimos el número del t
     heights : [ // aqui definimos la altura del tile (primer elemento el numero asociado al tile, el segundo la altura)
         [17, 2],
         [18,3], 
-      ]
+      ],
+    floor: [26,27,28,29,30,31,32,33,34,35]
   };  
 ```
 
@@ -90,6 +91,7 @@ Por ejemplo, si queremos que el tile sea atravesable, añadimos el número del t
 - **hollow**: Hace que el elemento sea atravesable, pero visible para el jugador.
 - **heights**: La altura que tendrá el elemento (numero_tile,numero_altura)
 - **billboard**: El elemento se imprimirá como sprite estático y no le afectará el ángulo de visión.
+- **floor**: El elemento se imprimirá como suelo, como una carretera o una alfombra ( si queremos pasar por encima, deberemos también que añadir el tile a **hollow**).
 - **multilater** (solo aplica a los billboards): Permite que un sprite tipo billboard cambie de apariencia según el ángulo de visión. Los tiles multilater deben seguir un formato específico (ver siguiente imagen).
   ![Ejemplo de sprite multilater](https://tonyponyy.github.io/raycastjs/img/coche.png)
   
