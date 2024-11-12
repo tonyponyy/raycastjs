@@ -1,17 +1,26 @@
 function drawSky() {
   const skyTexture = textures.sky;
+  const skyTexture2 = textures.sky2;
   const skyWidth = canvas.width * 2;
   const skyHeight = canvas.height / 2 + camera.z;
+
+  const skyOffset1 = (camera.angle * 110) % skyTexture.width;
+  const skyOffset2 = (camera.angle * 360) % skyTexture2.width; 
+
   const imageCount = Math.ceil(skyWidth / skyTexture.width) + 7;
 
-  for (let i = -400; i < imageCount; i++) {
-    const x = parseInt(
-      i * skyTexture.width * 2 - ((camera.angle * 110) % skyTexture.width) * 2
-    );
+  for (let i = -2; i < imageCount; i++) {
+    const x = i * skyTexture.width * 2 - skyOffset1 * 2;
+    ctx.drawImage(skyTexture, x, 0, skyTexture.width * 2, skyHeight);
+  }
 
-    ctx.drawImage(skyTexture, x - 450, 0, skyTexture.width * 2, skyHeight);
+  for (let i = -2; i < imageCount; i++) {
+    const x = i * skyTexture2.width * 2 - skyOffset2 * 2;
+    ctx.drawImage(skyTexture2, x, skyHeight-skyTexture2.height, skyTexture2.width * 2, skyTexture2.height);
   }
 }
+
+
 
 
 function drawFloor() {

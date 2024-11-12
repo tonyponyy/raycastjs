@@ -101,10 +101,6 @@ function castRays() {
         const textureX = Math.floor(rayData.hitPosition * textures[rayData.tileType].width) % textures[rayData.tileType].width;
         const wallX = i * (canvas_setting.width / raycast_setting.ray_count);
         
-        //const angleFromCenter = Math.abs(rayAngle - camera.angle);
-        //const apparentWidth = Math.cos(angleFromCenter) / adjustedDistance;
-        //if (adjustedDistance <= 0 || angleFromCenter > Math.PI / 2.2 || apparentWidth < 0.02) continue;
-
         for (let j = 0; j < blockCount; j++) {
           const blockYPosition = canvas_setting.height / 2 - singleBlockHeight / 2 - j * singleBlockHeight + camera.z;
           ctx.drawImage(
@@ -139,7 +135,7 @@ function castRays() {
 function castFloor() {
   const rayAngleStep = raycast_setting.fov / raycast_setting.ray_count;
   const pixelWidth = Math.ceil(canvas_setting.width / raycast_setting.ray_count);
-  const floor_setting = 3; // Cambia este valor para controlar la cantidad de píxeles que se saltan
+  const floor_setting = 3; // pixeles que se salta
 
   for (let x = 0; x < raycast_setting.ray_count; x++) {
     const rayAngle = normalizeAngle(camera.angle - raycast_setting.fov / 2 + x * rayAngleStep);
@@ -164,7 +160,6 @@ function castFloor() {
         const textureY = Math.floor((worldY % TILE_SIZE) / TILE_SIZE * TILE_SIZE);
 
         try {
-          // Dibuja la textura solo cada `floor_setting` píxeles
           ctx.drawImage(
             textures[map[mapY][mapX]],
             textureX,

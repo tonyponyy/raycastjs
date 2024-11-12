@@ -19,7 +19,8 @@
     </style>
 </head>
 <body>
-    <canvas id="canvas" width="800" height="600"></canvas>
+    <canvas id="canvas" width="960" height="540"></canvas>
+    <button id="fullscreen" onclick="set_fullscreen()">Full Screen</button>
     <script src="js/settings.js"></script>
     <script src="js/maps.js"></script>
     <script src="js/gui_controller.js"></script>
@@ -29,5 +30,19 @@
     <script src="js/player_controller.js"></script>
     <script src="js/map_controller.js"></script>
     <script src="js/main.js"></script>
+    <script>
+
+    function set_fullscreen(){
+      if (canvas.requestFullscreen) {
+        canvas.requestFullscreen();
+      } else if (canvas.mozRequestFullScreen) { // Firefox
+        canvas.mozRequestFullScreen();
+      } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari y Opera
+        canvas.webkitRequestFullscreen();
+      } else if (canvas.msRequestFullscreen) { // Edge/IE
+        canvas.msRequestFullscreen();
+      }
+    }
+    </script>
 </body>
 </html>

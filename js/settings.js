@@ -6,7 +6,7 @@ var PI = 3.14
 //configuración del raycast
 var raycast_setting = {
     fov: PI / 3, //el angulo del campo de visión
-    ray_count:200, // los numeros de rayos ( a mas rayos, mas calidad pero se pierde rendimiento)
+    ray_count:240, // los numeros de rayos ( a mas rayos, mas calidad pero se pierde rendimiento)
     distance: 30, // la distancia a partir se empieza a dibujar
 }
 
@@ -23,8 +23,8 @@ const player = {
 
 //configuración del canvas
 const canvas_setting = {
-    width:800,
-    height:600,
+    width:960,
+    height:540,
     frame_counter : 0
 }
 
@@ -54,7 +54,7 @@ const camera = {
     y: player.y,
     z: 6,
     angle: player.angle,
-    distance: 40,
+    distance: 90,
     height: 32,
     dirX: Math.cos(45),
     dirY: Math.sin(45),
@@ -65,7 +65,7 @@ const camera = {
   // configuración de los tiles
   const map_setting = {
     hollow: [4, 8,26,27,28,29,30,31,32,33,34,35],
-    billboard: [5, 6, 7, 8, 9,25,36],
+    billboard: [5, 6, 7, 8, 9,25,36,37],
     multilater: [9],
     heights : [ // aqui definimos la altura del tile (primer elemento el tile, el segundo la altura)
         [17, 2],
@@ -77,7 +77,8 @@ const camera = {
         [24,4],
         [25,5], 
       ],
-    floor: [26,27,28,29,30,31,32,33,34,35]
+    floor: [26,27,28,29,30,31,32,33,34,35],
+    move:[[37,6]]
     
   };  
 
@@ -119,12 +120,15 @@ const camera = {
     34: new Image(),
     35: new Image(),
     36: new Image(),
+    37: new Image(),
+    38: new Image(),
     floor: new Image(),
     sky: new Image(),
     floor2: new Image(),
     playerImage: new Image(),
     playerImageiz: new Image(),
     playerImageder: new Image(),
+    sky2: new Image(),
     turbo1: new Image(),
     turbo2: new Image(),
     turbo3: new Image(),
@@ -167,8 +171,11 @@ const camera = {
     34: "img/asfalto9.png",
     35: "img/checkpoint.png",
     36: "img/ceda.png",
+    37: "img/baile.png",
+    38: "img/cochetest.png",
     floor: "img/suelo.png",
     sky: "img/cielo.png",
+    sky2: "img/desert_fondo.png",
     floor2: "img/arena.png",
     playerImage:"img/personaje.png",
     playerImageiz:"img/personajeiz.png",

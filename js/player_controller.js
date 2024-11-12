@@ -10,48 +10,17 @@ function can_move(x, y) {
 
 
 function drawPlayer() {
-  var corx = 0
-  var cory = 0
-  frame = parseInt(canvas_setting.frame_counter/5)%3
-  let player_img = textures.playerImage;
-  var turbo_img = textures.turbo1
-
-  if (keys["ArrowLeft"]) {
-     corx = 30
-     cory = -20
-    player_img = textures.playerImageiz;
-    turbo_img = textures.turbo2
-  } else if (keys["ArrowRight"]) {
-    corx = -30
-    cory = -20
-    player_img = textures.playerImageder;
-    turbo_img = textures.turbo3
-  }
-
-  ctx.drawImage(
-    player_img,
-    parseInt(canvas.width / 2 - 5),
-    parseInt(canvas.height / 2)+80,
-    parseInt(150 - camera.z * 2),
-    parseInt(150 - camera.z * 2)
-  );
-  if (player.turbo_enabled) {
-    ctx.drawImage(
-      turbo_img,
-      TILE_SIZE*frame,          // Coordenada X de la sección de la imagen a recortar
-      0,          // Coordenada Y de la sección de la imagen a recortar
-      64,         // Ancho de la sección a recortar (64 píxeles)
-      64,         // Alto de la sección a recortar (64 píxeles)
-      parseInt(canvas.width / 2 - 5)+corx, // Coordenada X en el canvas donde se dibujará la imagen
-      parseInt(canvas.height / 2) + 130+cory , // Coordenada Y en el canvas donde se dibujará la imagen
-      parseInt(150 - camera.z * 2), // Ancho de la imagen en el canvas
-      parseInt(150 - camera.z * 2)  // Alto de la imagen en el canvas
-    );
-  }
   
 
-
-
+  if (keys["ArrowLeft"]) {
+   other_sprites[0].texture = textures.playerImageiz
+  } else if (keys["ArrowRight"]) {
+   other_sprites[0].texture = textures.playerImageder
+  }else{
+    if (other_sprites[0].texture != textures.playerImage){
+      other_sprites[0].texture = textures.playerImage
+    }
+  }
 
 }
 
@@ -80,6 +49,22 @@ function player_physics() {
   if (keys["D"] || keys["d"]) {
     player.turbo_enabled = true;
     turbo = player.turbo
+
+  }
+  if (keys["S"] || keys["s"]) {
+    let object = {
+      x: player.x,
+      y: player.y,
+      texture: textures[37],
+      distanceToCamera: 100,
+      multilater: false,
+      loop: false,
+      vx: physics.velocityX+physics.velocityX/2,
+      vy: physics.velocityY+physics.velocityY/2,
+      origonal_pos: { x: 3070, y: 5014 },
+      map:0,
+    }
+    other_sprites.push(object)
 
   }
   let acceleration = 0;
@@ -140,6 +125,9 @@ function player_physics() {
 
   player.x = newX;
   player.y = newY;
+  //seteamos la posición del jugador en el mapa
+  other_sprites[0].x = newX;
+  other_sprites[0].y = newY;
 
   const turnSpeed = physics.angleSpeed * (1 - (currentSpeed / maxSpeed) * 0.3);
   if (keys["ArrowLeft"]) {
@@ -155,8 +143,8 @@ function player_physics() {
   const cameraTargetX = player.x - Math.cos(player.angle) * camera.distance;
   const cameraTargetY = player.y - Math.sin(player.angle) * camera.distance;
   
-  camera.x += (cameraTargetX - camera.x) * 0.1;
-  camera.y += (cameraTargetY - camera.y) * 0.1;
+  camera.x += (cameraTargetX - camera.x) * 0.5;
+  camera.y += (cameraTargetY - camera.y) * 0.5;
   camera.angle = player.angle;
   if (map[Math.floor(player.y / 64)][Math.floor(player.x / 64)] === DOOR_TILE) {
     physics.velocityX = 0;

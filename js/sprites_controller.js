@@ -1,6 +1,18 @@
 
 var other_sprites = [
   {
+    x: player.x,
+    y: player.y,
+    texture: textures[38],
+    distanceToCamera: 0,
+    multilater: true,
+    loop: false,
+    vx: 0,
+    vy: 0,
+    origonal_pos: { x: 3070, y: 5014 },
+    map:0,
+  },
+  {
     x: 3070,
     y: 5014,
     texture: textures[9],
@@ -56,6 +68,7 @@ function drawSprites() {
           texture: textures[map[y][x]],
           distanceToCamera: 0,
           multilater: map_setting.multilater.indexOf(map[y][x]) != -1,
+          tile_number: map[y][x]
         });
       }
     }
@@ -127,14 +140,29 @@ function drawSprites() {
         bufferIndex < zBuffer.length &&
         distance < zBuffer[bufferIndex]
       ) {
+        //sprites con movimiento
+        
+        let move_correction = 0;
+        var speedFactor = 0.15
+
+        if (sprite.tile_number !== undefined && sprite.tile_number !== null) {
+          const moveEntry = map_setting.move.find(entry => entry[0] === sprite.tile_number);
+        
+          if (moveEntry) {
+            const frameCycle = Math.floor((canvas_setting.frame_counter * speedFactor) % moveEntry[1]);
+            move_correction = frameCycle * TILE_SIZE;
+          }
+        }
+
         const progress = (x - (screenX - spriteWidth / 2)) / spriteWidth;
         const sourceX =
           tileXOffset + Math.max(0, Math.min(63, Math.floor(progress * 64)));
+        
 
         try {
           ctx.drawImage(
             sprite.texture,
-            sourceX,
+            sourceX+move_correction,
             0,
             1,
             TILE_SIZE,

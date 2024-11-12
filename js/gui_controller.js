@@ -9,10 +9,12 @@ function drawHUD(context = ctx) {
     ctx.fillStyle = 'black';
     ctx.font = '14px Verdana';
     const info = [
-        `VX: ${physics.velocityX.toFixed(2)}`,
-        `VY: ${physics.velocityY.toFixed(2)}`,
-        `CURRENT LEVEL: ${CURRENT_LEVEL}`,
-        "",
+        'VX: '+physics.velocityX.toFixed(2)+'VY: '+physics.velocityY.toFixed(2),
+        'X: '+player.x.toFixed(2)+' Y: '+player.y.toFixed(2),
+        'FRAMES: '+canvas_setting.frame_counter
+        ,
+        'CURRENT LEVEL:'+CURRENT_LEVEL+ ' LAP:'+0,
+        '',
         "ARROWS TO MOVE, D FOR TURBO"
     ];
     info.forEach((line, index) => {
