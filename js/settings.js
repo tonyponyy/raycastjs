@@ -7,7 +7,7 @@ var PI = 3.14
 var raycast_setting = {
     fov: PI / 3, //el angulo del campo de visión
     ray_count:240, // los numeros de rayos ( a mas rayos, mas calidad pero se pierde rendimiento)
-    distance: 30, // la distancia a partir se empieza a dibujar
+    distance: 90, // la distancia a partir se empieza a dibujar
 }
 
 // configuración del jugador
