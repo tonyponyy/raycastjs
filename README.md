@@ -95,7 +95,7 @@ Por ejemplo, si queremos que el tile sea atravesable, añadimos el número del t
 - **floor**: El elemento se imprimirá como suelo, como una carretera o una alfombra ( si queremos pasar por encima, deberemos también que añadir el tile a **hollow**).
 - **move**: (solo aplica a los billboards) Si queremos que el sprite tenga una animación, debemos exportar la imagen como un tilesheet:
   ![Ejemplo de sprite de movimiento](https://tonyponyy.github.io/raycastjs/img/baile.png)
-  
+  <br>
   Donde tenemos que poner todas las secuencias de la imagen seguidas y poner un array dentro de **move** con la información (numero_tile,numero_de_fotogramas).
 - **multilater** (solo aplica a los billboards): Permite que un sprite tipo billboard cambie de apariencia según el ángulo de visión. Los tiles multilater deben seguir un formato específico (ver siguiente imagen).
   ![Ejemplo de sprite multilater](https://tonyponyy.github.io/raycastjs/img/coche.png)
