@@ -1,6 +1,6 @@
 function drawSky() {
   const skyTexture = textures.sky;
-  const skyTexture2 = textures.sky2;
+  const skyTexture2 = maps[CURRENT_LEVEL].sky;
   const skyWidth = canvas.width * 2;
   const skyHeight = canvas.height / 2 + camera.z;
 
@@ -11,12 +11,12 @@ function drawSky() {
 
   for (let i = -2; i < imageCount; i++) {
     const x = i * skyTexture.width * 2 - skyOffset1 * 2;
-    ctx.drawImage(skyTexture, x, 0, skyTexture.width * 2, skyHeight);
+    ctx.drawImage(skyTexture, Math.floor(x), 0, Math.floor(skyTexture.width * 2), parseInt(skyHeight));
   }
 
   for (let i = -2; i < imageCount; i++) {
     const x = i * skyTexture2.width * 2 - skyOffset2 * 2;
-    ctx.drawImage(skyTexture2, x, skyHeight-skyTexture2.height, skyTexture2.width * 2, skyTexture2.height);
+    ctx.drawImage(skyTexture2, Math.floor(x), Math.floor(skyHeight-skyTexture2.height), skyTexture2.width * 2, parseInt(skyTexture2.height));
   }
 }
 
@@ -47,8 +47,8 @@ function drawFloor() {
         if (lastTexX !== -1) {
           ctx.drawImage(
             floorTexture,
-            lastTexX, lastTexY, 1, 1,
-            blockStart, y, x - blockStart + COLUMN_STEP, STEP_SIZE
+           Math.floor( lastTexX), Math.floor(lastTexY), 1, 1,
+            Math.floor(blockStart), Math.floor(y), Math.floor(x - blockStart + COLUMN_STEP), STEP_SIZE
           );
         }
         blockStart = x;

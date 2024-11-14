@@ -112,7 +112,7 @@ function castRays() {
             parseInt(wallX),
             parseInt(blockYPosition),
             parseInt(canvas_setting.width / raycast_setting.ray_count + 3),
-            singleBlockHeight
+            Math.floor(singleBlockHeight)
           );
           
           let distanceShading = Math.pow(adjustedDistance / shadow_settings.distance, 2);

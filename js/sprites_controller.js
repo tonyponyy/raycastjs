@@ -10,7 +10,7 @@ var other_sprites = [
     vx: 0,
     vy: 0,
     origonal_pos: { x: 3070, y: 5014 },
-    map:0,
+    map:-1,
   },
   {
     x: 3070,
@@ -73,7 +73,7 @@ function drawSprites() {
       }
     }
   }
-  sprites = sprites.concat(other_sprites.filter(sprite => sprite.map === CURRENT_LEVEL));
+  sprites = sprites.concat(other_sprites.filter(sprite => sprite.map === CURRENT_LEVEL || -1));
 
 
   const visibleSprites = sprites.filter((sprite) => {
@@ -162,14 +162,14 @@ function drawSprites() {
         try {
           ctx.drawImage(
             sprite.texture,
-            sourceX+move_correction,
+            Math.floor(sourceX+move_correction),
             0,
             1,
             TILE_SIZE,
-            x,
-            screenY,
+            Math.floor(x),
+            Math.floor(screenY),
             1,
-            spriteHeight
+            Math.floor(spriteHeight)
           );
         } catch (e) {
           console.error("Error al renderizar sprite:", e);
