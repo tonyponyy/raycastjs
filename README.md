@@ -3,6 +3,7 @@
 
 Este proyecto implementa una técnica de **raycasting** en JavaScript para crear una perspectiva tridimensional en un entorno 2D, similar a los primeros juegos en 3D. Además, incluye **sprites** tipo billboard y diferentes alturas.
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+  <img src="https://tonyponyy.github.io/raycastjs/img/screenshot3.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
   <img src="https://tonyponyy.github.io/raycastjs/img/screenshot2.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
   <img src="https://tonyponyy.github.io/raycastjs/img/screenshot.png" alt="Coche en el juego" height="250" style="max-width: 100%; height: auto;">
 </div>
@@ -32,6 +33,7 @@ var maps = [
     h: 20,
     door: 1,
     floor: " imageSources.floor,
+    sky:textures.sky,
   },
   {
     // segundo mapa
@@ -45,10 +47,11 @@ var maps = [
 - **w** y **h**: Representan el ancho (width) y el alto (height) del mapa, respectivamente.
 - **door**: Indica el mapa a cargar al cruzar una puerta (el número representa la posición del mapa en el array **maps**).
 - **floor**: Es la ruta del sprite que se usará para el suelo.
+- **sky**: imagen de fondo de paralaje del horizonte.
 
 ## Añadir elementos para usarlos en el mapa
 
-Para añadir un nuevo elemento al mapa (como una nueva pared), primero debemos **añadir la imagen** al proyecto en el archivo **js/textures.js**, creando la imagen en **textures** y añadiendo la fuente en **imageSources**
+Para añadir un nuevo elemento al mapa (como una nueva pared), primero debemos **añadir la imagen** al proyecto en el archivo **js/settings.js**, creando la imagen en **textures** y añadiendo la fuente en **imageSources**
 
 ```javascript
 const textures = {
@@ -181,6 +184,6 @@ var shadow_settings = {
 
 ## Otras Consideraciones y Mejoras
 
-Aún quedan muchas cosas por mejorar, como el suelo, la visualización del sprite del jugador y solucionar algunos errores visuales. Con lo escrito aquí, tienes una base suficiente para empezar a explorar el código. Espero solucionar estos problemas y añadir nuevas funciones pronto.
+Aún quedan muchas cosas por mejorar, como el suelo, la visualización del sprite del jugador y solucionar algunos errores visuales. Con lo escrito aquí, tienes una base suficiente para empezar a explorar el código. No creo que añada mas funcionalidades, como mucho alguna optimización (que aún queda mucho que optimizar).
 
 Este proyecto tiene licencia **UNLICENSE**, lo que significa que puedes utilizar el código para lo que quieras: modificarlo, venderlo... de hecho, te animo a intentar sacar dinero con él, buena suerte.
